@@ -58,6 +58,20 @@ pandoc --version
 5. **Look** — colours are tokens at the top of `assets/css/style.css` (light, then dark);
    replace `assets/img/logo.svg` for your own logo.
 6. Rebuild with `make` after each change (only changed pages are rebuilt).
+7. **Interactive pages** (optional) — a page can carry its own charts: put the HTML in a
+   ```` ```{=html} ```` block and add, in front matter or `site.yaml`:
+
+   ```yaml
+   css: [css/extra.css]              # stylesheets after the template's
+   scripts: [vendor/d3.min.js]       # classic scripts, end of body
+   modules: [js/main.js]             # ES modules, end of body
+   main-class: page                  # replaces the narrow "paper" column
+   favicon: img/icon.svg             # tab icon (default: assets/img/logo.svg)
+   ```
+
+   The theme button fires a `themechange` event on `document`, so charts can redraw.
+   Used by the MJO Track Archive (github.com/nmathewa/mjo-tracker), which builds its page
+   from this template as a git submodule.
 
 ## 3. Serve
 
@@ -78,7 +92,7 @@ can host it. `make clean` removes it.
 | `content/*.md` | one page each; front matter: `title`, `subtitle`, `date`, `abstract`, `contents: true` |
 | `content/img/` | figures (copied to `_site/img/`) |
 | `content/references.bib` | BibTeX for `[@key]` citations |
-| `site.yaml` | shared settings: site name, eyebrow, author, affiliation, logo, navigation, footer |
+| `site.yaml` | shared settings: site name, eyebrow, author, affiliation, logo, navigation, footer; optional `css`, `scripts`, `modules`, `main-class`, `favicon` |
 | `templates/page.html` | the pandoc HTML template |
 | `assets/css/style.css` | all styling; colour tokens at the top (light and dark) |
 | `filters/crossref.lua` | numbers figures/tables and resolves `@fig:id` / `@tbl:id` |

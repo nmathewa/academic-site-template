@@ -16,12 +16,16 @@ Technology. Repo: github.com/nmathewa/academic-site-template.
 - `site.yaml` — shared metadata: `site`, `eyebrow`, `author`, `affiliation`, `logo`, `root`, `nav`
   (title/href list), `footer`. Page front matter overrides it.
 - `templates/page.html` — pandoc template: title block (eyebrow, logo + title, subtitle, byline,
-  summary, nav), optional contents, `<main class="paper">`, footer, theme button.
+  summary, nav), optional contents, `<main class="paper">`, footer, theme button. Optional fields for
+  interactive pages: `css`, `scripts`, `modules` (lists), `main-class`, `favicon`.
+- **Used by the MJO Track Archive** (`~/mjo_track_app`, submodule `theme/`, which its CI updates to
+  this repo's latest `main` on every build). Keep changes backward compatible: don't rename the
+  fields, CSS tokens, `#theme` button or the `themechange` event without updating that site.
 - `filters/crossref.lua` — numbers figures/tables ("Figure 1.", "Table 1.") and turns `@fig:id` /
   `@tbl:id` into links; runs before `--citeproc` so those ids never reach the bibliography.
 - `assets/css/style.css` — all styling; colour tokens on `:root` (light) and repeated for dark
   (`prefers-color-scheme` + `[data-theme]`). Okabe–Ito blue/vermillion, Source Serif 4 / Source Sans 3.
-- `assets/js/theme.js` — auto/light/dark toggle, remembered in localStorage.
+- `assets/js/theme.js` — auto/light/dark toggle, remembered in localStorage; fires `themechange` on `document`.
 - `content/references.bib` — citations (`[@key]`); default CSL is pandoc's Chicago author-date.
 
 ## Commands

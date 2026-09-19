@@ -1,4 +1,5 @@
 // Colour theme: auto (system) → light → dark, remembered per browser.
+// Pages with drawn charts can redraw on document's "themechange" event.
 const btn = document.getElementById("theme");
 const LABEL = { auto: "◐ Auto", light: "☀ Light", dark: "☾ Dark" };
 function setTheme(t, save = true) {
@@ -7,6 +8,7 @@ function setTheme(t, save = true) {
   btn.textContent = LABEL[t];
   btn.setAttribute("aria-label", `Colour theme: ${t}. Click to change.`);
   if (save) try { localStorage.setItem("theme", t); } catch {}
+  document.dispatchEvent(new CustomEvent("themechange", { detail: t }));
 }
 if (btn) {
   setTheme(document.documentElement.dataset.theme ?? "auto", false);

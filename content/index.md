@@ -62,7 +62,7 @@ A `note` block is quieter, for side remarks.
 
 ```bash
 make          # build every page into _site/
-make serve    # build, then serve on http://0.0.0.0:8000
+make serve    # build, then serve on http://0.0.0.0:8010
 ```
 
 ## References {#references}

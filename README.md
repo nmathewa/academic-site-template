@@ -12,7 +12,7 @@ Needs [pandoc](https://pandoc.org/installing.html) ≥ 3.1 and `make` (Python on
 
 ```bash
 make          # content/*.md -> _site/*.html
-make serve    # build and serve on http://0.0.0.0:8000 (LAN / Tailscale too)
+make serve    # build and serve on http://0.0.0.0:8010 (LAN / Tailscale too)
 make clean
 ```
 

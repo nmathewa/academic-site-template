@@ -1,9 +1,9 @@
 # Build the site from Markdown with pandoc.
 #   make          build _site/
-#   make serve    build, then serve on http://0.0.0.0:8000 (reachable on your LAN / Tailscale)
+#   make serve    build, then serve on http://0.0.0.0:8010 (reachable on your LAN / Tailscale)
 #   make clean    remove _site/
 PANDOC ?= pandoc
-PORT   ?= 8000
+PORT   ?= 8010
 PAGES  := $(patsubst content/%.md,_site/%.html,$(wildcard content/*.md))
 DEPS   := templates/page.html site.yaml filters/crossref.lua $(wildcard content/*.bib)
 

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="$if(lang)$$lang$$else$en$endif$">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>$if(pagetitle)$$pagetitle$$else$$title$$endif$$if(site)$ · $site$$endif$</title>
+$if(description)$
+  <meta name="description" content="$description$">
+$endif$
+$for(author)$
+  <meta name="author" content="$author$">
+$endfor$
+  <link rel="icon" type="image/svg+xml" href="$root$assets/img/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+  <link rel="stylesheet" href="$root$assets/css/style.css">
+  <script>
+    // apply a saved light/dark choice before first paint (assets/js/theme.js has the toggle)
+    try { const t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch {}
+  </script>
+$for(header-includes)$
+  $header-includes$
+$endfor$
+</head>
+<body>
+  <header class="top">
+    <div class="topline">
+$if(eyebrow)$
+      <p class="eyebrow">$eyebrow$</p>
+$endif$
+      <button id="theme" type="button" class="theme-btn" title="Colour theme: follows your system, light, or dark"></button>
+    </div>
+    <h1 class="title">$if(logo)$<img class="logo" src="$root$$logo$" alt="" width="44" height="44">$endif$$title$</h1>
+$if(subtitle)$
+    <p class="subtitle">$subtitle$</p>
+$endif$
+$if(author)$
+    <p class="byline">$for(author)$<span class="author">$author$</span>$sep$, $endfor$$if(affiliation)$ · <span class="affil">$affiliation$</span>$endif$$if(date)$ · <span class="date">$date$</span>$endif$</p>
+$endif$
+$if(abstract)$
+    <div class="abstract"$if(summary-title)$ style="--label: '$summary-title$'"$endif$>
+$abstract$
+    </div>
+$endif$
+$if(nav)$
+    <nav class="toc" aria-label="Pages">$for(nav)$<a href="$root$$nav.href$">$nav.title$</a>$endfor$</nav>
+$endif$
+  </header>
+
+$if(contents)$
+  <nav class="page-toc" aria-label="Contents">
+    <p class="page-toc-title">Contents</p>
+$table-of-contents$
+  </nav>
+$endif$
+
+  <main class="paper">
+$body$
+  </main>
+
+  <footer class="foot">
+$if(footer)$
+    <p>$footer$</p>
+$endif$
+    <p class="built">Built with pandoc$if(date)$ · $date$$endif$.</p>
+  </footer>
+  <script src="$root$assets/js/theme.js"></script>
+</body>
+</html>

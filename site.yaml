@@ -1,0 +1,17 @@
+# Shared settings for every page (a page's own front matter overrides these).
+site: Research Notes
+eyebrow: Research group · Notes and results
+author:
+  - Nirmal Mathew Alex
+affiliation: Florida Institute of Technology
+logo: assets/img/logo.svg
+root: ""                      # prefix for links/assets; leave empty for a flat site
+link-citations: true
+nav:
+  - title: Home
+    href: index.html
+  - title: Methods
+    href: methods.html
+  - title: References
+    href: index.html#references
+footer: "Nirmal Mathew Alex · Florida Institute of Technology"
